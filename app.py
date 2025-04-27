@@ -3,6 +3,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import load_model
+import os
 
 app = Flask(__name__)
 
@@ -201,4 +202,6 @@ def predict():
         }, 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get('PORT', 8080))
+    app.run(debug=False, host='0.0.0.0', port=port)
